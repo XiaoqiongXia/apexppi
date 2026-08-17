@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local runtime output
+/logs/
+/results/
+*.log
+*.pid
+
+# Large data and model artifacts
+/data/raw_data/
+/data/external/
+/data/processed/
+/models/
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.joblib
+*.npy
+*.npz
+
+# Research workspace artifacts
+/archive_not_for_submission/
+/manuscript/
+/Project_Paper templates/
+.tmp*/
+.pycache_tmp/
+.mplconfig/
+.coverage
+dist/
+build/
+*.egg-info/
+/artifacts/
+*.tar.gz
