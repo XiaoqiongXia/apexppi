@@ -25,13 +25,11 @@ Install a platform-specific PyTorch build first if you need CUDA.
 ## Download the model
 
 The release contains the trained checkpoint, processed graph, protein tables,
-and model metrics. For this private repository, download it with an
-authenticated GitHub CLI session:
+and model metrics. Download and verify both release files:
 
 ```bash
-gh release download v0.1.0 \
-  --repo XiaoqiongXia/apexppi \
-  --pattern 'apexppi-bundle-v0.1.0.tar.gz*'
+curl -LO https://github.com/XiaoqiongXia/apexppi/releases/download/v0.1.0/apexppi-bundle-v0.1.0.tar.gz
+curl -LO https://github.com/XiaoqiongXia/apexppi/releases/download/v0.1.0/apexppi-bundle-v0.1.0.tar.gz.sha256
 sha256sum --check apexppi-bundle-v0.1.0.tar.gz.sha256
 tar -xzf apexppi-bundle-v0.1.0.tar.gz
 ```
@@ -58,7 +56,8 @@ The command-line interface supports pair scoring and host ranking:
 apexppi-predict \
   --bundle-dir apexppi-bundle-v0.1.0 \
   --host-uniprot O00170 \
-  --pathogen-uniprot Q69027
+  --pathogen-uniprot Q69027 \
+  --device cpu
 
 apexppi-predict \
   --bundle-dir apexppi-bundle-v0.1.0 \
@@ -66,6 +65,10 @@ apexppi-predict \
   --top-k 50 \
   --output-tsv results/q69027_host_ranking.tsv
 ```
+
+With the v0.1.0 bundle, the pair example reports
+`"known_hpidb_positive": true` and an interaction probability of approximately
+`0.91019`.
 
 ## Model and data
 
